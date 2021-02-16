@@ -88,24 +88,20 @@ body {
 }
 
 .title3 {
-    width          : 280px;
-    height         : 40px;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
+    width      : 280px;
+    height     : 40px;
+    display    : flex;
+    align-items: center;
 }
 
 .material-icons {
-    color : #ffd400;
-    width : 280px;
-    height: 75px;
-
+    color          : #ffd400;
+    width          : 280px;
+    height         : 75px;
     display        : flex;
     justify-content: center;
     align-items    : center;
     font-size      : 32px;
-
-
 }
 
 .title4 {
