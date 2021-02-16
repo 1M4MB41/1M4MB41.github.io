@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let n = 6;
+        let d = 12.55;
+        let a = [0.8, 4, -0.17, 2, 0.9, 1];
+        let c = 0;
+
+        let h = d + sum(a);
+
+        function sum(b) {
+            for (let i = 0; i < n; i++) {
+                c += Math.pow(b[i], 2);
+            }
+            return c;
+        }
+        alert(h);
+
+    </script>
+
+</body>
+
+</html>
