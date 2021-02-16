@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="cards"></div>
+
+    <script>
+
+        let s = "";
+
+        let card = [
+            {
+                t1: "Тайная жизнь домашних животных 2",
+                cost: 17.00,
+                value: "руб.",
+                stock: true,
+                rating: 3.5,
+                img: "pets.jpg",
+                mediaType: "type.png",
+                button: "order.jpg"
+            },
+            {
+                t1: "Фердинанд",
+                cost: 10.00,
+                value: "$",
+                stock: false,
+                rating: 5,
+                img: "ferd.jpg",
+                mediaType: "type.png",
+                button: "order.jpg"
+            },
+            {
+                t1: "История игрушек 4",
+                cost: 19.00,
+                value: "евро.",
+                stock: true,
+                rating: 4,
+                img: "toy4.jpg",
+                mediaType: "type.png",
+                button: "order.jpg"
+            }
+        ]
+
+        for (i = 0; i < card.length; i++) {
+            s += `<div class="card">
+            <div class="pic"><img src="images/${card[i].img}">${vis()}<img src="images/${card[i].mediaType}"></div>
+            <div class="title1"><div>${card[i].t1}</div></div>
+            <div class="title2">${discount(card[i].cost)}</div>
+            <div class="title3"><span class="material-icons">${score(card[i].rating)}</span></div>
+            <div class="title4"><img src="images/${card[i].button}"></div>  </div>`;
+        }
+
+        cards.innerHTML = s;
+
+        function score(r) {
+            switch (r) {
+                case 1:
+                    r = 'star  star_border star_border star_border star_border';
+                    break;
+                case 1.5:
+                    r = 'star  star_half star_border star_border star_border';
+                    break;
+                case 2:
+                    r = 'star star star_border star_border star_border';
+                    break;
+                case 2.5:
+                    r = 'star star star_half star_border star_border';
+                    break;
+                case 3:
+                    r = 'star star star star_border star_border';
+                    break;
+                case 3.5:
+                    r = 'star star star star_half star_border';
+                    break;
+                case 4:
+                    r = 'star star star star star_border';
+                    break;
+                case 4.5:
+                    r = 'star star star star star_half';
+                    break;
+                case 5:
+                    r = 'star star star star star';
+                    break;
+            }
+            return r;
+        }
+
+        function discount(p) {
+            let d = p * 0.9;
+            d = d.toFixed(2).toString().replace('.', ',');
+            p = p.toFixed(2).toString().replace('.', ',');
+            let s = '';
+            let v = card[i].value;
+            if (card[i].stock == true) {
+                s = `<div>${d}${v}</div><div>${p}${v}</div>`
+            } else
+                s = `<div>${p}${v}</div>`;
+            return s;
+        }
+
+        function vis() {
+            let v = '';
+            if (card[i].stock == true) {
+                v = `<img src="images/sales.png" style="visibility: visible;">`
+            } else v = `<img src="images/sales.png">`;
+            return v;
+        }
+
+    </script>
+
+</body>
+
+</html>
