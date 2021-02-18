@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <style>
+        section {
+            width: 550px;
+            height: 400px;
+            margin: 0 auto;
+            transition: .3s;
+        }
+
+        section:hover {
+            filter: brightness(80%);
+        }
+        div{
+            position: relative;
+            width: 70px;
+        }
+        #title1{
+            padding: 0 10px;
+            width: 530px;
+            height: 100px;
+            background: grey;
+            color: white;
+            opacity: 0.8;
+            top: -124px;
+        }
+        #title2{
+            border: solid 1px white;
+            width: 175px;
+            height: 50px;
+            top: -515px;
+            left: 15px;
+            color: white;
+            font-size: 24pt;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #d{
+            color: white;
+            text-decoration: none;
+            font-size: 14pt;
+            transition: .3s;
+        }
+        #d:hover{
+            color: blue;
+        }
+        .material-icons{
+            font-size: 70px;
+            color: white;
+            transition: .3s; 
+        }
+        #prev{
+            border: solid 1px black;
+            top: -425px;
+        }
+        #next{
+            border: solid 1px black;
+            top: -501px;
+            left: 478px; 
+        }
+        .material-icons:hover{
+            color: aqua;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <section id="sec" onmouseout="timerId=setTimeout(changePic, 1000)">
+        <a id="h1" href=""><img id="pic"
+                src="" alt=""></a>
+                <div id="title1"><h1 id="h"></h1><a id="d" href="#"></a></div>
+                <div id="title2"></div>
+                <div id="prev"><a href="javascript:bc()"><span class="material-icons">
+                    navigate_before</span></a></div>
+                <div id="next"><a href="javascript:fr()"><span class="material-icons">
+                    navigate_next</span></a></div>
+    </section>
+
+    <script>
+
+let n = 1;
+        let p = 6;
+        let to = ['https://google.by', 'https://yandex.by', 'http://htmlbook.ru', 'https://youtube.com', 'https://webref.ru', 'https://airport.by'];
+        let disc = ['девушка в купальнике', 'Карниз «Струна» предназначен для подвески штор из лёгкой ткани на одну струну',
+         'Бузина чёрная – многолетнее растение, кустарник или деревце 3–10 м высотой', 'Роторный насос — общее название насосов принудительного смещения',
+          'девушка из будущего', 'фото с ковровой дорожки'];
+
+        function changePic() {
+            if(n > p){
+                n = 1;
+            }
+            pic.src = `images/img${n}b.jpg`;
+            h1.href = to[n - 1];
+            h.innerHTML = `Заголовок слайда ${n}`;
+            d.innerHTML = disc[n - 1];
+            l = to[n - 1].length;
+            pos = to[n - 1].lastIndexOf("/");
+            s = to[n - 1].substr(pos + 1, l - pos);
+            title2.innerHTML = s;
+            n++;
+            timerId = setTimeout(changePic, 1000);
+        }
+        function stop() {
+            clearTimeout(timerId)
+        }
+        
+        function fr() {
+            if(n >= p){
+                n = 1;
+            }
+            else n++;
+            pic.src = `images/img${n}b.jpg`;
+            h1.href = to[n - 1];
+            h.innerHTML = `Заголовок слайда ${n}`;
+            d.innerHTML = disc[n - 1];
+            s = to[n - 1].substr(pos + 1, l - pos);
+            title2.innerHTML = s;
+        }
+        
+        function bc() {
+            if(n == 1){
+                n = 6;
+            }
+            else n--;
+            pic.src = `images/img${n}b.jpg`;
+            h1.href = to[n - 1];
+            h.innerHTML = `Заголовок слайда ${n}`;
+            d.innerHTML = disc[n - 1];
+            s = to[n - 1].substr(pos + 1, l - pos);
+            title2.innerHTML = s;
+            }
+            
+            
+            document.body.addEventListener('load', changePic());
+            sec.addEventListener('mouseover',  stop);
+            // sec.addEventListener('mouseout',  changePic);
+    </script>
+
+</body>
+
+</html>
