@@ -40,23 +40,26 @@
             height: 50px;
             top: -515px;
             left: 15px;
-            color: white;
-            font-size: 24pt;
-            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        #d {
+
+        a {
             color: white;
             text-decoration: none;
             font-size: 14pt;
             transition: .3s;
         }
 
-        #d:hover {
-            color: blue;
+        #title2 a {
+            font-size: 24pt;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: aqua;
         }
 
         .material-icons {
@@ -83,10 +86,8 @@
 <body>
 
     <section id="sec" onmouseout="timerId=setTimeout(changePic, 1000)">
-        <a id="h1" href=""><img id="pic" src="" alt=""></a>
-        <div id="title1">
-            <h1 id="h"></h1><a id="d" href="#"></a>
-        </div>
+        <a id="h1" href=""><img id="pic" src=""></a>
+        <div id="title1"></div>
         <div id="title2"></div>
         <div id="prev"><a href="javascript:bc()"><span class="material-icons">
                     navigate_before</span></a></div>
@@ -107,19 +108,12 @@
             if (n > p) {
                 n = 1;
             }
-            pic.src = `images/img${n}b.jpg`;
-            h1.href = to[n - 1];
-            h.innerHTML = `Заголовок слайда ${n}`;
-            d.innerHTML = disc[n - 1];
-            l = to[n - 1].length;
-            pos = to[n - 1].lastIndexOf("/");
-            s = to[n - 1].substr(pos + 1, l - pos);
-            title2.innerHTML = s;
+            changeElements();
             n++;
             timerId = setTimeout(changePic, 1000);
         }
         function stop() {
-            clearTimeout(timerId)
+            clearTimeout(timerId);
         }
 
         function fr() {
@@ -127,12 +121,7 @@
                 n = 1;
             }
             else n++;
-            pic.src = `images/img${n}b.jpg`;
-            h1.href = to[n - 1];
-            h.innerHTML = `Заголовок слайда ${n}`;
-            d.innerHTML = disc[n - 1];
-            s = to[n - 1].substr(pos + 1, l - pos);
-            title2.innerHTML = s;
+            changeElements();
         }
 
         function bc() {
@@ -140,18 +129,22 @@
                 n = 6;
             }
             else n--;
+            changeElements();
+        }
+
+        function changeElements() {
             pic.src = `images/img${n}b.jpg`;
             h1.href = to[n - 1];
-            h.innerHTML = `Заголовок слайда ${n}`;
-            d.innerHTML = disc[n - 1];
+            title1.innerHTML = `<h1 id="h">Заголовок слайда ${n}</h1><a href="${to[n - 1]}">${disc[n - 1]}</a>`;
+            l = to[n - 1].length;
+            pos = to[n - 1].lastIndexOf("/");
             s = to[n - 1].substr(pos + 1, l - pos);
-            title2.innerHTML = s;
+            title2.innerHTML = `<a href="${to[n - 1]}">${s}</a>`;
         }
 
 
         document.body.addEventListener('load', changePic());
         sec.addEventListener('mouseover', stop);
-            // sec.addEventListener('mouseout',  changePic);
     </script>
 
 </body>
