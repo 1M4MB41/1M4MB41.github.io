@@ -67,8 +67,7 @@ nav{
 }
 
 footer{
-    position: relative;
-    bottom: 0;
+    display: table-row;
     width: 100%;
     height: auto;
     background: black;
