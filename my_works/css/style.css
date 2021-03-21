@@ -67,13 +67,15 @@ nav{
 }
 
 footer{
+    position: fixed;
+    left: auto;
+    bottom: auto;
     width: 100%;
     height: auto;
     background: black;
     margin: 0 auto;
     text-align: center;
     padding-top: 25px;
-    flex-shrink: 0;
 }
 footer a{
     font-size: 15px;
